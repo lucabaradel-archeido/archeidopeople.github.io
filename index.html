@@ -17,6 +17,71 @@
     />
     <title>ArcheidoPeople</title>
   </head>
+      <!-- Avviso nuovo indirizzo: blocca la pagina -->
+    <dialog id="moved" aria-labelledby="moved-title" aria-describedby="moved-text">
+      <div class="moved-icon" aria-hidden="true">🐒</div>
+      <h2 id="moved-title">ArcheidoPeople si è trasferito</h2>
+      <p id="moved-text">
+        Il portale è DEPRECATO. Ora ha un nuovo indirizzo. Questa pagina non viene
+        più aggiornata e non sarà più disponibile da novembre.
+      </p>
+      <a class="moved-btn" href="https://claude.ai/artifact/BzkpN7bCkFKNpB5zFe5E49?sk=vWqzPhZUIHf8scvSjG7wsQ">
+        Vai al nuovo ArcheidoPeople
+      </a>
+      <p class="moved-tip">Ricordati di aggiornare i tuoi preferiti.</p>
+    </dialog>
+
+    <style>
+      #moved {
+        width: min(92vw, 440px);
+        padding: 32px 28px;
+        border: 0;
+        border-radius: 20px;
+        background: #262626;
+        color: #fefefe;
+        font-family: Montserrat, sans-serif;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      }
+      #moved::backdrop {
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+      }
+      #moved[open] { animation: moved-in 0.35s ease-out; }
+      @keyframes moved-in {
+        from { opacity: 0; transform: translateY(12px) scale(0.97); }
+        to { opacity: 1; transform: none; }
+      }
+      .moved-icon { font-size: 44px; line-height: 1; margin-bottom: 12px; }
+      #moved h2 { margin: 0 0 12px; font-size: 1.5em; color: #4fc1e3; }
+      #moved p { margin: 0 0 22px; font-size: 1em; line-height: 1.55; color: #d6d6d6; }
+      .moved-btn {
+        display: block;
+        padding: 15px 20px;
+        border-radius: 14px;
+        background: #4fc1e3;
+        color: #0b2a33;
+        font-weight: 800;
+        text-decoration: none;
+        transition: filter 0.2s, transform 0.15s;
+      }
+      .moved-btn:hover { filter: brightness(1.08); }
+      .moved-btn:active { transform: scale(0.98); }
+      .moved-btn:focus-visible { outline: 3px solid #fefefe; outline-offset: 3px; }
+      #moved .moved-tip { margin: 16px 0 0; font-size: 0.85em; color: #9a9a9a; }
+      body.moved-lock { overflow: hidden; }
+      @media (prefers-reduced-motion: reduce) { #moved[open] { animation: none; } }
+    </style>
+
+    <script>
+      (function () {
+        var d = document.getElementById("moved");
+        d.addEventListener("cancel", function (e) { e.preventDefault(); }); // Esc non la chiude
+        document.body.classList.add("moved-lock");
+        d.showModal();
+      })();
+    </script>
   <body>
     <header>
       <h1>ArcheidoPeople</h1>
